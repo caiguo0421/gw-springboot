@@ -41,7 +41,7 @@
                                 </span>
                             </a>
                         </div>
-                        <div class="logo-element">SPPanAdmin
+                        <div class="logo-element">经销商管理
                         </div>
                     </li>
                     <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
@@ -56,21 +56,74 @@
                     <li>
                         <a href="#">
                             <i class="fa fa fa-cog"></i>
-                            <span class="nav-label">系统管理</span>
+                            <span class="nav-label">用户管理</span>
                             <span class="fa arrow"></span>
                         </a>
                         <ul class="nav nav-second-level">
                             <li>
-                               <a class="J_menuItem" href="${ctx!}/admin/user/index">用户管理</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="${ctx!}/admin/role/index">角色管理</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="${ctx!}/admin/resource/index">资源管理</a>
+                               <a class="J_menuItem" href="${ctx!}/admin/user/index">用户列表</a>
                             </li>
                         </ul>
                     </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="fa fa fa-cog"></i>
+                            <span class="nav-label">经销商管理</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a class="J_menuItem" href="${ctx!}/admin/user/index">经销商信息</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="fa fa fa-cog"></i>
+                            <span class="nav-label">版本管理</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a class="J_menuItem" href="${ctx!}/admin/user/index">安装包版本信息</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="fa fa fa-cog"></i>
+                            <span class="nav-label">报表管理</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a class="J_menuItem" href="${ctx!}/admin/user/index">报表主题</a>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" href="${ctx!}/admin/user/index">报表推送日志</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="fa fa fa-cog"></i>
+                            <span class="nav-label">其他</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a class="J_menuItem" href="${ctx!}/admin/user/index">用户反馈</a>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" href="${ctx!}/admin/user/index">异常信息</a>
+                            </li>
+                        </ul>
+                    </li>
+
                     <li class="line dk"></li>
                 </ul>
             </div>
@@ -85,14 +138,14 @@
                     <ul class="nav navbar-top-links navbar-right">
                         <li class="dropdown">
                             <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                                <i class="fa fa-user"></i> <span class="label label-primary"></span>【<@shiro.principal type="net.sppan.base.entity.User" property="nickName"/>】
+                                <i class="fa fa-user"></i> <span class="label label-primary"></span>【测试】
                             </a>
                             <ul class="dropdown-menu dropdown-alerts">
                                 <li>
                                     <a href="${ctx!}/admin/logout">
                                         <div>
                                             <i class="fa fa-remove"></i> 注销
-                                            <span class="pull-right text-muted small"><@shiro.principal type="net.sppan.base.entity.User" property="userName"/></span>
+                                            <span class="pull-right text-muted small">测试</span>
                                         </div>
                                     </a>
                                 </li>

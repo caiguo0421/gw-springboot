@@ -45,7 +45,7 @@
         </div>
         <div class="signup-footer">
             <div class="pull-left">
-                &copy; SPPan
+                &copy; TYSoft
             </div>
         </div>
     </div>

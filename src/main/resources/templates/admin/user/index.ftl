@@ -33,9 +33,7 @@
                     </div>
                     <div class="ibox-content">
                         <p>
-                        	<@shiro.hasPermission name="system:user:add">
-                        		<button class="btn btn-success " type="button" onclick="add();"><i class="fa fa-plus"></i>&nbsp;添加</button>
-                        	</@shiro.hasPermission>
+                        	<button class="btn btn-success " type="button" onclick="add();"><i class="fa fa-plus"></i>&nbsp;添加</button>
                         </p>
                         <hr>
                         <div class="row row-lg">
@@ -113,73 +111,19 @@
 			    //数据列
 			    columns: [{
 			        title: "ID",
-			        field: "id",
-			        sortable: true
+			        field: "userId",
 			    },{
 			        title: "用户名",
-			        field: "userName"
-			    },{
-			        title: "所属角色",
-			        field: "roles",
-			        formatter: function(value, row, index) {
-                    	var r = "";
-                    	$(value).each(function (index,role){
-                    		r = r + "【" + role.name + "】";
-                    	});
-                    	return r;
-                    }
-			    },{
-			        title: "昵称",
-			        field: "nickName"
-			    },{
-			        title: "性别",
-			        field: "sex",
-			        formatter: function(value, row, index) {
-                        if (value == '0') 
-                        	return '<span class="label label-warning">女</span>';
-                        return '<span class="label label-primary">男</span>';
-                    }
-			    },{
-			        title: "出生日期",
-			        field: "birthday"
-			    },{
-			        title: "电话",
-			        field: "telephone"
-			    },{
-			        title: "邮箱",
-			        field: "email"
-			    },{
-			        title: "状态",
-			        sortable: true,
-			        field: "deleteStatus",
-                    formatter: function (value, row, index) {
-                        if (value == '0') 
-                        	return '<span class="label label-info">未删除</span>';
-                        return '<span class="label label-danger">已删除</span>';
-                    }
-			    },{
-			        title: "锁定",
-			        field: "locked",
-			        formatter: function (value, row, index) {
-                        if (value == '0') 
-                        	return '<span class="label label-info">未锁定</span>';
-                        return '<span class="label label-danger">已锁定</span>';
-                    }
-			    },{
-			        title: "创建时间",
-			        field: "createTime",
-			        sortable: true
-			    },{
-			        title: "更新时间",
-			        field: "updateTime",
-			        sortable: true
-			    },{
+			        field: "username",
+                    sortable: true
+
+                },{
 			        title: "操作",
 			        field: "empty",
                     formatter: function (value, row, index) {
-                    	var operateHtml = '<@shiro.hasPermission name="system:user:edit"><button class="btn btn-primary btn-xs" type="button" onclick="edit(\''+row.id+'\')"><i class="fa fa-edit"></i>&nbsp;修改</button> &nbsp;</@shiro.hasPermission>';
-                    	operateHtml = operateHtml + '<@shiro.hasPermission name="system:user:deleteBatch"><button class="btn btn-danger btn-xs" type="button" onclick="del(\''+row.id+'\')"><i class="fa fa-remove"></i>&nbsp;删除</button> &nbsp;</@shiro.hasPermission>';
-                    	operateHtml = operateHtml + '<@shiro.hasPermission name="system:user:grant"><button class="btn btn-info btn-xs" type="button" onclick="grant(\''+row.id+'\')"><i class="fa fa-arrows"></i>&nbsp;关联角色</button></@shiro.hasPermission>';
+                    	var operateHtml = '<button class="btn btn-primary btn-xs" type="button" onclick="edit(\''+row.userId+'\')"><i class="fa fa-edit"></i>&nbsp;修改</button> &nbsp;';
+                    	operateHtml = operateHtml + '<button class="btn btn-danger btn-xs" type="button" onclick="del(\''+row.userId+'\')"><i class="fa fa-remove"></i>&nbsp;删除</button> &nbsp;';
+                    	operateHtml = operateHtml + '<button class="btn btn-info btn-xs" type="button" onclick="grant(\''+row.userId+'\')"><i class="fa fa-arrows"></i>&nbsp;关联角色</button>';
                         return operateHtml;
                     }
 			    }]

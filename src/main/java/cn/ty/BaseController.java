@@ -66,7 +66,7 @@ public class BaseController {
     protected PageRequest getPageRequest(){
     	int page = 1;
     	int size = 10;
-    	Sort sort = null;
+    	Sort sort = Sort.unsorted();
     	try {
     		String sortName = request.getParameter("sortName");
     		String sortOrder = request.getParameter("sortOrder");
@@ -82,7 +82,8 @@ public class BaseController {
     	} catch (Exception e) {
     		e.printStackTrace();
     	}
-    	PageRequest pageRequest = new PageRequest(page, size, sort);
+//    	PageRequest pageRequest = new PageRequest(page, size, sort);
+		PageRequest pageRequest = PageRequest.of(page, size, sort);
     	return pageRequest;
     }
     

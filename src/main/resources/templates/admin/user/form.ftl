@@ -41,65 +41,24 @@
                     </div>
                     <div class="ibox-content">
                         <form class="form-horizontal m-t" id="frm" method="post" action="${ctx!}/admin/user/edit">
-                        	<input type="hidden" id="id" name="id" value="${user.id}">
                             <div class="form-group">
-                                <label class="col-sm-3 control-label">账户名：</label>
+                                <label class="col-sm-3 control-label">ID：</label>
                                 <div class="col-sm-8">
-                                    <input id="userName" name="userName" class="form-control" type="text" value="${user.userName}" <#if user?exists> readonly="readonly"</#if> >
+                                    <input id="userId" name="userId" class="form-control" type="text" value="${user.userId}" <#if user?exists> readonly="readonly"</#if> >
                                 </div>
                             </div>
+
                             <div class="form-group">
-                                <label class="col-sm-3 control-label">昵称：</label>
+                                <label class="col-sm-3 control-label">用户名：</label>
                                 <div class="col-sm-8">
-                                    <input id="nickName" name="nickName" class="form-control" type="text" value="${user.nickName}">
+                                    <input id="username" name="username" class="form-control" type="text" value="${user.username}">
                                 </div>
                             </div>
+
                             <div class="form-group">
-                                <label class="col-sm-3 control-label">性别：</label>
+                                <label class="col-sm-3 control-label">密码：</label>
                                 <div class="col-sm-8">
-                                	<select name="sex" class="form-control">
-                                		<option value="0" <#if user.sex == 0>selected="selected"</#if>>女</option>
-                                		<option value="1" <#if user.sex == 1>selected="selected"</#if>>男</option>
-                                	</select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">出生日期：</label>
-                                <div class="col-sm-8">
-                                    <input id="birthday" name="birthday" readonly="readonly" class="laydate-icon form-control layer-date" value="${user.birthday}">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">电话：</label>
-                                <div class="col-sm-8">
-                                    <input id="telephone" name="telephone" class="form-control" value="${user.telephone}">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">E-mail：</label>
-                                <div class="col-sm-8">
-                                    <input id="email" name="email" class="form-control" value="${user.email}">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">地址：</label>
-                                <div class="col-sm-8">
-                                    <input id="address" name="address" class="form-control" value="${user.address}">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">状态：</label>
-                                <div class="col-sm-8">
-                                	<select name="locked" class="form-control">
-                                		<option value="0" <#if user.locked == 0>selected="selected"</#if>>未锁定</option>
-                                		<option value="1" <#if user.locked == 1>selected="selected"</#if>>锁定</option>
-                                	</select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">描述：</label>
-                                <div class="col-sm-8">
-                                    <input id="description" name="description" class="form-control" value="${user.description}">
+                                    <input id="password" name="password" class="form-control" type="text" value="${user.password}">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -138,40 +97,12 @@
 	  	
 	    $("#frm").validate({
     	    rules: {
-    	    	userName: {
+    	    	username: {
     	        required: true,
-    	        minlength: 4,
-    	    	maxlength: 10
     	      },
-    	      	nickName: {
+    	      	password: {
     	        required: true,
-    	        minlength: 4,
-    	    	maxlength: 10
-    	      },
-    	      	sex: {
-    	        required: true
-    	      },
-    	      	birthday: {
-    	      	date:true,
-    	        required: true
-    	      },
-    	      	telephone: {
-    	        required: true
-    	      },
-    	      	email: {
-    	      	email:true,
-    	        required: true
-    	      },
-    	      	address: {
-    	        required: true,
-    	        maxlength: 40
-    	      },
-    	      	locked: {
-    	        required: true
-    	      },
-    	      	description: {
-    	        required: true,
-    	        maxlength: 40
+    	        minlength: 6
     	      }
     	    },
     	    messages: {},
