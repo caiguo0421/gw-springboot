@@ -1,13 +1,15 @@
 package cn.ty.gw.repository;
 
 import cn.ty.gw.model.ReportSubject;
+import cn.ty.gw.model.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface ReportSubjectRepository extends JpaRepository<ReportSubject, String> {
+public interface ReportSubjectRepository extends JpaRepository<ReportSubject, String>, JpaSpecificationExecutor<ReportSubject> {
 
     @Query("select distinct subjectNo from ReportSubject u where u.reportStatus = 1")
     public List<String> findDistinctSubjectNo();
@@ -27,5 +29,8 @@ public interface ReportSubjectRepository extends JpaRepository<ReportSubject, St
 
     @Query(value = "select  distinct subject_no from report_subject a where not exists( select 1 from report_send_log  b where b.send_date=:sendDate and b.send_status =1 and b.subject_no =a.subject_no )  and a.report_status = 1", nativeQuery = true)
     public List<String> findFailSubjectNo(@Param("sendDate") String sendDate);
+
+    @Query("SELECT max(u.sortNo) from ReportSubject u ")
+    public List<Short> findMaxSortNo();
 
 }

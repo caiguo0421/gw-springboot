@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-    <title>用户列表</title>
+    <title>经销商列表</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
 
@@ -29,7 +29,7 @@
         <div class="col-sm-12">
             <div class="ibox ">
                 <div class="ibox-title">
-                    <h5>用户管理</h5>
+                    <h5>经销商管理</h5>
                 </div>
                 <div class="ibox-content">
                     <p>
@@ -81,7 +81,7 @@
             //必须设置，不然request.getParameter获取不到请求参数
             contentType: "application/x-www-form-urlencoded",
             //获取数据的Servlet地址
-            url: "${ctx!}/admin/user/list",
+            url: "${ctx!}/admin/company/list",
             //表格显示条纹
             striped: true,
             //启动分页
@@ -112,18 +112,47 @@
             //数据列
             columns: [{
                 title: "ID",
-                field: "userId",
+                field: "companyId",
             }, {
-                title: "用户名",
-                field: "username",
+                title: "经销商编码",
+                field: "companyNo",
                 sortable: true
-
             }, {
+                title: "经销商名称",
+                field: "companyName",
+                sortable: true
+            },  {
+                title: "经销商版本",
+                field: "serverVersion",
+                sortable: true
+            },{
+                title: "Url",
+                field: "serverUrl",
+                sortable: true
+            }, {
+                title: "数据源Url",
+                field: "datasourceUrl",
+                sortable: true
+            }, {
+                title: "数据库名称",
+                field: "datasourceDbName",
+                sortable: true
+            },
+            //     {
+            //     title: "数据库用户名",
+            //     field: "datasourceUsername",
+            //     sortable: true
+            // }, {
+            //     title: "数据库密码",
+            //     field: "datasourcePassword",
+            //     sortable: true
+            // },
+                {
                 title: "操作",
                 field: "empty",
                 formatter: function (value, row, index) {
-                    var operateHtml = '<button class="btn btn-primary btn-xs" type="button" onclick="edit(\'' + row.userId + '\')"><i class="fa fa-edit"></i>&nbsp;修改</button> &nbsp;';
-                    operateHtml = operateHtml + '<button class="btn btn-danger btn-xs" type="button" onclick="del(\'' + row.userId + '\')"><i class="fa fa-remove"></i>&nbsp;删除</button> &nbsp;';
+                    var operateHtml = '<button class="btn btn-primary btn-xs" type="button" onclick="edit(\'' + row.companyId + '\')"><i class="fa fa-edit"></i>&nbsp;修改</button> &nbsp;';
+                    operateHtml = operateHtml + '<button class="btn btn-danger btn-xs" type="button" onclick="del(\'' + row.companyId + '\')"><i class="fa fa-remove"></i>&nbsp;删除</button> &nbsp;';
                     return operateHtml;
                 }
             }]
@@ -137,7 +166,7 @@
             shadeClose: true,
             shade: false,
             area: ['893px', '600px'],
-            content: '${ctx!}/admin/user/edit/' + id,
+            content: '${ctx!}/admin/company/edit/' + id,
             end: function (index) {
                 $('#table_list').bootstrapTable("refresh");
             }
@@ -151,7 +180,7 @@
             shadeClose: true,
             shade: false,
             area: ['893px', '600px'],
-            content: '${ctx!}/admin/user/add',
+            content: '${ctx!}/admin/company/add',
             end: function (index) {
                 $('#table_list').bootstrapTable("refresh");
             }
@@ -163,7 +192,7 @@
             $.ajax({
                 type: "POST",
                 dataType: "json",
-                url: "${ctx!}/admin/user/delete/" + id,
+                url: "${ctx!}/admin/company/delete/" + id,
                 success: function (msg) {
                     layer.msg(msg.message, {time: 2000}, function () {
                         $('#table_list').bootstrapTable("refresh");

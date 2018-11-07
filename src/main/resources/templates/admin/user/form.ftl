@@ -44,7 +44,7 @@
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">ID：</label>
                                 <div class="col-sm-8">
-                                    <input id="userId" name="userId" class="form-control" type="text" value="${user.userId}" <#if user?exists> readonly="readonly"</#if> >
+                                    <input id="userId" name="userId" class="form-control" type="text" value="${user.userId}" readonly="readonly">
                                 </div>
                             </div>
 

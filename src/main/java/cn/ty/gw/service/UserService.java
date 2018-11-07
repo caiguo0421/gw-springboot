@@ -12,6 +12,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -40,6 +41,26 @@ public class UserService {
     }
 
     public void saveOrUpdate(Users user) {
-        usersRepository.save(user);
+        Users formUser = null;
+        if (user.getUserId() == null) {
+            formUser = user; //新增
+        } else {
+            formUser = find(user.getUserId());
+        }
+
+        formUser.setUsername(user.getUsername());
+        formUser.setPassword(user.getPassword());
+        usersRepository.saveAndFlush(formUser);
+    }
+
+    public void delete(Integer id) {
+        Users user = find(id);
+        if (user == null) {
+            throw new ServiceException(String.format("用户（%d）不存在", id));
+        }
+        if ("admin".equalsIgnoreCase(user.getUsername())) {
+            throw new ServiceException("admin不能删除");
+        }
+        usersRepository.delete(user);
     }
 }

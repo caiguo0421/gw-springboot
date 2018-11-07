@@ -17,10 +17,7 @@ public class DvplusGwApplication {
         SpringApplication.run(DvplusGwApplication.class, args);
     }
 
-    /**
-     *
-     * 其实大家主要关心下面的就好
-     */
+
     @Bean("duridDatasource")
     @ConfigurationProperties(prefix="spring.datasource")
     public DataSource druidDataSource() { return new DruidDataSource(); }

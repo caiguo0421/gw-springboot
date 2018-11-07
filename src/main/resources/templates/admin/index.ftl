@@ -74,7 +74,7 @@
                         </a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a class="J_menuItem" href="${ctx!}/admin/user/index">经销商信息</a>
+                                <a class="J_menuItem" href="${ctx!}/admin/company/index">经销商信息</a>
                             </li>
                         </ul>
                     </li>
