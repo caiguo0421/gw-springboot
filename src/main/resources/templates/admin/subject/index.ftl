@@ -2,7 +2,6 @@
 <html>
 
 <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -19,7 +18,6 @@
 
     <link href="${ctx!}/assets/css/animate.css" rel="stylesheet">
     <link href="${ctx!}/assets/css/style.css?v=4.1.0" rel="stylesheet">
-
 
 </head>
 
@@ -65,7 +63,6 @@
 
 <!-- Peity -->
 <script src="${ctx!}/assets/js/plugins/peity/jquery.peity.min.js"></script>
-
 <script src="${ctx!}/assets/js/plugins/layer/layer.min.js"></script>
 
 <!-- 自定义js -->
@@ -81,7 +78,7 @@
             //必须设置，不然request.getParameter获取不到请求参数
             contentType: "application/x-www-form-urlencoded",
             //获取数据的Servlet地址
-            url: "${ctx!}/admin/company/list",
+            url: "${ctx!}/admin/subject/list",
             //表格显示条纹
             striped: true,
             //启动分页
@@ -112,61 +109,54 @@
             //数据列
             columns: [{
                 title: "ID",
-                field: "companyId",
+                field: "subjectId",
             }, {
-                title: "经销商编码",
-                field: "companyNo",
-                sortable: true
-            }, {
-                title: "经销商名称",
-                field: "companyName",
-                sortable: true
-            },  {
-                title: "经销商版本",
-                field: "serverVersion",
-                sortable: true
-            },{
-                title: "Url",
-                field: "serverUrl",
+                title: "报表编码",
+                field: "subjectNo",
                 sortable: true
             }, {
-                title: "数据源Url",
-                field: "datasourceUrl",
+                title: "报表名称",
+                field: "subjectName",
+            }, {
+                title: "报表版本",
+                field: "reportVersion",
                 sortable: true
             }, {
-                title: "数据库名称",
-                field: "datasourceDbName",
-                sortable: true
-            },
-            //     {
-            //     title: "数据库用户名",
-            //     field: "datasourceUsername",
-            //     sortable: true
-            // }, {
-            //     title: "数据库密码",
-            //     field: "datasourcePassword",
-            //     sortable: true
-            // },
-                {
-                title: "操作",
-                field: "empty",
+                title: "状态",
+                field: "reportStatus",
+                sortable: true,
                 formatter: function (value, row, index) {
-                    var operateHtml = '<button class="btn btn-primary btn-xs" type="button" onclick="edit(\'' + row.companyId + '\')"><i class="fa fa-edit"></i>&nbsp;修改</button> &nbsp;';
-                    operateHtml = operateHtml + '<button class="btn btn-danger btn-xs" type="button" onclick="del(\'' + row.companyId + '\')"><i class="fa fa-remove"></i>&nbsp;删除</button> &nbsp;';
-                    return operateHtml;
+                    if (value == '1')
+                        return '<span class="label label-info">在用</span>';
+                    return '<span class="label label-danger">停用</span>';
                 }
-            }]
+            }, {
+                title: "备注",
+                field: "reportRemark",
+            }, {
+                title: "创建时间",
+                field: "createTime",
+            },
+                {
+                    title: "操作",
+                    field: "empty",
+                    formatter: function (value, row, index) {
+                        var operateHtml = '<button class="btn btn-primary btn-xs" type="button" onclick="edit(\'' + row.subjectId + '\')"><i class="fa fa-edit"></i>&nbsp;修改</button> &nbsp;';
+                        operateHtml = operateHtml + '<button class="btn btn-danger btn-xs" type="button" onclick="del(\'' + row.subjectId + '\')"><i class="fa fa-remove"></i>&nbsp;删除</button> &nbsp;';
+                        return operateHtml;
+                    }
+                }]
         });
     });
 
     function edit(id) {
         layer.open({
             type: 2,
-            title: '用户修改',
+            title: '报表修改',
             shadeClose: true,
             shade: false,
             area: ['893px', '600px'],
-            content: '${ctx!}/admin/company/edit/' + id,
+            content: '${ctx!}/admin/subject/edit/' + id,
             end: function (index) {
                 $('#table_list').bootstrapTable("refresh");
             }
@@ -176,11 +166,11 @@
     function add() {
         layer.open({
             type: 2,
-            title: '用户添加',
+            title: '报表添加',
             shadeClose: true,
             shade: false,
             area: ['893px', '600px'],
-            content: '${ctx!}/admin/company/add',
+            content: '${ctx!}/admin/subject/add',
             end: function (index) {
                 $('#table_list').bootstrapTable("refresh");
             }
@@ -192,7 +182,7 @@
             $.ajax({
                 type: "POST",
                 dataType: "json",
-                url: "${ctx!}/admin/company/delete/" + id,
+                url: "${ctx!}/admin/subject/delete/" + id,
                 success: function (msg) {
                     layer.msg(msg.message, {time: 2000}, function () {
                         $('#table_list').bootstrapTable("refresh");
@@ -205,7 +195,7 @@
 
     function detailFormatter(index, row) {
         var html = [];
-        html.push('<p><b>描述:</b> ' + row.description + '</p>');
+        html.push('<p><b>报表Sql:</b> ' + row.reportSql + '</p>');
         return html.join('');
     }
 </script>

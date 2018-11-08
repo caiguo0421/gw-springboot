@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit">
 
-    <title> SPPanAdmin- 主页</title>
+    <title> 经销商管理- 主页</title>
 
     <meta name="keywords" content="">
     <meta name="description" content="">
@@ -15,7 +15,8 @@
     <meta http-equiv="refresh" content="0;ie.html" />
     <![endif]-->
 
-    <link rel="shortcut icon" href="favicon.ico"> 
+    <link rel="shortcut icon" href="favicon.ico">
+
     <link href="${ctx!}/assets/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
     <link href="${ctx!}/assets/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
     <link href="${ctx!}/assets/css/animate.css" rel="stylesheet">
@@ -36,7 +37,7 @@
                                 <span class="clear">
                                     <span class="block m-t-xs" style="font-size:20px;">
                                         <i class="fa fa-area-chart"></i>
-                                        <strong class="font-bold">SPPanAdmin</strong>
+                                        <strong class="font-bold">经销商管理</strong>
                                     </span>
                                 </span>
                             </a>
@@ -100,7 +101,7 @@
                         </a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a class="J_menuItem" href="${ctx!}/admin/user/index">报表主题</a>
+                                <a class="J_menuItem" href="${ctx!}/admin/subject/index">报表主题</a>
                             </li>
                             <li>
                                 <a class="J_menuItem" href="${ctx!}/admin/user/index">报表推送日志</a>

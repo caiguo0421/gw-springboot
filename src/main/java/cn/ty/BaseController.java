@@ -82,7 +82,6 @@ public class BaseController {
     	} catch (Exception e) {
     		e.printStackTrace();
     	}
-//    	PageRequest pageRequest = new PageRequest(page, size, sort);
 		PageRequest pageRequest = PageRequest.of(page, size, sort);
     	return pageRequest;
     }
@@ -110,8 +109,9 @@ public class BaseController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-    	PageRequest pageRequest = new PageRequest(page, size, sort);
-    	return pageRequest;
+		PageRequest pageRequest = PageRequest.of(page, size, sort);
+
+		return pageRequest;
     }
 
 }

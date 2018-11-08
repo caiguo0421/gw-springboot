@@ -10,6 +10,8 @@ import cn.ty.gw.specification.SpecificationOperator;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,7 +25,7 @@ public class SubjectController extends BaseController {
     @Autowired
     private ReportSubjectService subjectService;
 
-    @RequestMapping(value = { "/", "/index" })
+    @RequestMapping(value = {"/", "/index"})
     public String index() {
         return "admin/subject/index";
     }
@@ -36,20 +38,25 @@ public class SubjectController extends BaseController {
         if (StringUtils.isNotBlank(searchText)) {
             builder.add("name", SpecificationOperator.Operator.likeAll.name(), searchText);
         }
-        Page<ReportSubject> page = subjectService.findAll(builder.generateSpecification(), getPageRequest());
+        PageRequest pageRequest = getPageRequest();
+        if (pageRequest.getSort() == Sort.unsorted()) { //默认按sortNo排序
+            pageRequest = getPageRequest(new Sort(Sort.Direction.ASC, "sortNo"));
+        }
+
+        Page<ReportSubject> page = subjectService.findAll(builder.generateSpecification(), pageRequest);
         return page;
     }
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     public String edit(@PathVariable String id, ModelMap map) {
         ReportSubject subject = subjectService.find(id);
-        map.put("user", subject);
+        map.put("subject", subject);
         return "admin/subject/form";
     }
 
-    @RequestMapping(value= {"/edit"} ,method = RequestMethod.POST)
+    @RequestMapping(value = {"/edit"}, method = RequestMethod.POST)
     @ResponseBody
-    public JsonResult edit(ReportSubject subject, ModelMap map){
+    public JsonResult edit(ReportSubject subject, ModelMap map) {
         try {
             subjectService.saveOrUpdate(subject);
         } catch (Exception e) {
@@ -66,7 +73,7 @@ public class SubjectController extends BaseController {
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
     @ResponseBody
-    public JsonResult delete(@PathVariable String id,ModelMap map) {
+    public JsonResult delete(@PathVariable String id, ModelMap map) {
         try {
             subjectService.delete(id);
         } catch (Exception e) {

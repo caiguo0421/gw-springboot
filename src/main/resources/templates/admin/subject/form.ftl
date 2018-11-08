@@ -26,88 +26,60 @@
             <div class="col-sm-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>经销商信息</h5>
+                        <h5>报表信息</h5>
                     </div>
                     <div class="ibox-content">
-                        <input type="hidden" id="companyId" name="companyId" value="${company.companyId}">
+                        <input type="hidden" id="subjectId" name="subjectId" value="${subject.subjectId}">
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">经销商编码:</label>
+                            <label class="col-sm-3 control-label">报表编码:</label>
                             <div class="col-sm-8">
-                                <input id="companyNo" name="companyNo" class="form-control" type="text"
-                                       value="${company.companyNo}">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">经销商名称：</label>
-                            <div class="col-sm-8">
-                                <input id="companyName" name="companyName" class="form-control" type="text"
-                                       value="${company.companyName}">
+                                <input id="subjectNo" name="subjectNo" class="form-control" type="text"
+                                       value="${subject.subjectNo}">
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">经销商版本：</label>
+                            <label class="col-sm-3 control-label">报表名称：</label>
                             <div class="col-sm-8">
-                                <input id="serverVersion" name="serverVersion" class="form-control" type="text"
-                                       value="${company.serverVersion}">
+                                <input id="subjectName" name="subjectName" class="form-control" type="text"
+                                       value="${subject.subjectName}">
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Url：</label>
+                            <label class="col-sm-3 control-label">报表版本：</label>
                             <div class="col-sm-8">
-                                <input id="serverUrl" name="serverUrl" class="form-control" type="text"
-                                       value="${company.serverUrl}">
+                                <input id="reportVersion" name="reportVersion" class="form-control" type="text"
+                                       value="${subject.reportVersion}">
                             </div>
                         </div>
 
-                        <div class="ibox-content">
-                            <h5>数据源信息</h5>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">备注：</label>
+                            <div class="col-sm-8">
+                                <input id="reportRemark" name="reportRemark" class="form-control" type="text"
+                                       value="${subject.reportRemark}">
+                            </div>
                         </div>
 
-                        <div class="ibox-content">
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">url:</label>
-                                <div class="col-sm-8">
-                                    <input id="datasourceUrl" name="datasourceUrl" class="form-control" type="text"
-                                           value="${company.datasourceUrl}">
-                                </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">sql：</label>
+                            <div class="col-sm-8">
+                                <input id="reportSql" name="reportSql" class="form-control" type="text"
+                                       value="${subject.reportSql}">
                             </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">数据库名:</label>
-                                <div class="col-sm-8">
-                                    <input id="datasourceDbName" name="datasourceDbName" class="form-control"
-                                           type="text"
-                                           value="${company.datasourceDbName}">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">用户名:</label>
-                                <div class="col-sm-8">
-                                    <input id="datasourceUsername" name="datasourceUsername" class="form-control"
-                                           type="text"
-                                           value="${company.datasourceUsername}">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">密码:</label>
-                                <div class="col-sm-8">
-                                    <input id="datasourcePassword" name="datasourcePassword" class="form-control"
-                                           type="text"
-                                           value="${company.datasourcePassword}">
-                                </div>
-                            </div>
+                        </div>
 
-                            <div class="form-group">
-                                <div class="col-sm-8 col-sm-offset-3">
-                                    <button class="btn btn-primary" type="submit">提交</button>
-                                </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-8 col-sm-offset-3">
+                                <button class="btn btn-primary" type="submit">提交</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
     </form>
 

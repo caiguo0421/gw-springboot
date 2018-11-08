@@ -95,8 +95,8 @@
             //是否启用查询
             search: true,
             //是否启用详细信息视图
-            detailView: true,
-            detailFormatter: detailFormatter,
+            // detailView: true,
+            // detailFormatter: detailFormatter,
             //表示服务端请求
             sidePagination: "server",
             //设置为undefined可以获取pageNumber，pageSize，searchText，sortName，sortOrder
