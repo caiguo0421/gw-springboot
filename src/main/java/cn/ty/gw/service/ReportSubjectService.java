@@ -22,6 +22,7 @@ import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @Transactional
@@ -84,7 +85,7 @@ public class ReportSubjectService {
 
     public void saveOrUpdate(ReportSubject subject) {
         if (StringUtils.isBlank(subject.getSubjectId())) {
-
+            subject.setSubjectId(UUID.randomUUID().toString());
             subject.setReportStatus((short) 1);
             subject.setCreateTime(new Timestamp(System.currentTimeMillis()));
             if (subject.getSortNo() == null) {

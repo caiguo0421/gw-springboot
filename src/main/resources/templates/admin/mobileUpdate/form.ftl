@@ -21,51 +21,52 @@
 
 <body class="gray-bg">
 <div class="wrapper wrapper-content animated fadeInRight">
-    <form class="form-horizontal m-t" id="frm" method="post" action="${ctx!}/admin/subject/edit">
+    <form class="form-horizontal m-t" id="frm" method="post" action="${ctx!}/admin/mobileUpdate/edit">
         <div class="row">
             <div class="col-sm-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>报表信息</h5>
+                        <h5>发布新版本</h5>
                     </div>
                     <div class="ibox-content">
-                        <input type="hidden" id="subjectId" name="subjectId" value="${subject.subjectId}">
+                        <input type="hidden" id="id" name="id" value="${mobileUpdate.id}">
+
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">报表编码:</label>
-                            <div class="col-sm-10">
-                                <input id="subjectNo" name="subjectNo" class="form-control" type="text"
-                                       value="${subject.subjectNo}">
+                            <label class="col-sm-3 control-label">版本号：</label>
+                            <div class="col-sm-8">
+                                <input id="versionCode" name="versionCode" class="form-control" type="text"
+                                       value="${mobileUpdate.versionCode}">
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">报表名称：</label>
-                            <div class="col-sm-10">
-                                <input id="subjectName" name="subjectName" class="form-control" type="text"
-                                       value="${subject.subjectName}">
+                            <label class="col-sm-3 control-label">版本名称：</label>
+                            <div class="col-sm-8">
+                                <input id="versionName" name="versionName" class="form-control" type="text"
+                                       value="${mobileUpdate.versionName}">
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">报表版本：</label>
-                            <div class="col-sm-10">
-                                <input id="reportVersion" name="reportVersion" class="form-control" type="text"
-                                       value="${subject.reportVersion}">
+                            <label class="col-sm-3 control-label">安装包类型：</label>
+                            <div class="col-sm-8">
+                                <input id="terminalType" name="terminalType" class="form-control" type="text"
+                                       value="${mobileUpdate.terminalType}">
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">备注：</label>
-                            <div class="col-sm-10">
-                                <input id="reportRemark" name="reportRemark" class="form-control" type="text"
-                                       value="${subject.reportRemark}">
+                            <label class="col-sm-3 control-label">上传文件：</label>
+                            <div class="col-sm-8">
+                                <input id="updateUrl" name="updateUrl" class="form-control" type="text"
+                                       value="${mobileUpdate.updateUrl}">
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">sql：</label>
-                            <div class="col-sm-10">
-                                <textarea id="reportSql" name="reportSql" class="form-control" rows="10" value="${subject.reportSql}">${subject.reportSql}</textarea>
+                            <label class="col-sm-3 control-label">更新内容：</label>
+                            <div class="col-sm-8">
+                                <textarea id="updateContent" name="updateContent" class="form-control" rows="5" value="${mobileUpdate.updateContent}">${subject.updateContent}</textarea>
                             </div>
                         </div>
 
@@ -120,7 +121,7 @@
                 $.ajax({
                     type: "POST",
                     dataType: "json",
-                    url: "${ctx!}/admin/subject/edit",
+                    url: "${ctx!}/admin/mobileUpdate/edit",
                     data: $(form).serialize(),
                     success: function (msg) {
                         layer.msg(msg.message, {time: 2000}, function () {

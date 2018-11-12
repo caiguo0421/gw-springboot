@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-    <title>经销商列表</title>
+    <title>安装包版本管理</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
 
@@ -32,11 +32,11 @@
         <div class="col-sm-12">
             <div class="ibox ">
                 <div class="ibox-title">
-                    <h5>经销商管理</h5>
+                    <h5>安装包版本管理</h5>
                 </div>
                 <div class="ibox-content">
                     <p>
-                        <button class="btn btn-success " type="button" onclick="add();"><i class="fa fa-plus"></i>&nbsp;添加
+                        <button class="btn btn-success " type="button" onclick="add();"><i class="fa fa-plus"></i>&nbsp;发布新版本
                         </button>
                     </p>
                     <hr>
@@ -83,7 +83,7 @@
             //必须设置，不然request.getParameter获取不到请求参数
             contentType: "application/x-www-form-urlencoded",
             //获取数据的Servlet地址
-            url: "${ctx!}/admin/subject/list",
+            url: "${ctx!}/admin/mobileUpdate/list",
             //表格显示条纹
             striped: true,
             //启动分页
@@ -114,40 +114,37 @@
             //数据列
             columns: [{
                 title: "ID",
-                field: "subjectId",
+                field: "id" ,
             }, {
-                title: "报表编码",
-                field: "subjectNo",
+                title: "版本号",
+                field: "versionCode",
                 sortable: true
             }, {
-                title: "报表名称",
-                field: "subjectName",
+                title: "版本名称",
+                field: "versionName",
             }, {
-                title: "报表版本",
-                field: "reportVersion",
+                title: "安装包类型",
+                field: "terminalType",
                 sortable: true
             }, {
-                title: "状态",
-                field: "reportStatus",
-                sortable: true,
-                formatter: function (value, row, index) {
-                    if (value == '1')
-                        return '<span class="label label-info">在用</span>';
-                    return '<span class="label label-danger">停用</span>';
-                }
+                title: "更新内容",
+                field: "updateContent"
             }, {
-                title: "备注",
-                field: "reportRemark",
+                title: "更新时间",
+                field: "updateTime"
             }, {
-                title: "创建时间",
-                field: "createTime",
+                title: "更新人",
+                field: "updateUser",
+            }, {
+                title: "文件大小",
+                field: "fileSize",
             },
                 {
                     title: "操作",
                     field: "empty",
                     formatter: function (value, row, index) {
-                        var operateHtml = '<button class="btn btn-primary btn-xs" type="button" onclick="edit(\'' + row.subjectId + '\')"><i class="fa fa-edit"></i>&nbsp;修改</button> &nbsp;';
-                        operateHtml = operateHtml + '<button class="btn btn-danger btn-xs" type="button" onclick="del(\'' + row.subjectId + '\')"><i class="fa fa-remove"></i>&nbsp;删除</button> &nbsp;';
+                        // var operateHtml = '<button class="btn btn-primary btn-xs" type="button" onclick="edit(\'' + row.id + '\')"><i class="fa fa-edit"></i>&nbsp;修改</button> &nbsp;';
+                        var operateHtml = '<button class="btn btn-danger btn-xs" type="button" onclick="del(\'' + row.id + '\')"><i class="fa fa-remove"></i>&nbsp;删除</button> &nbsp;';
                         return operateHtml;
                     }
                 }]
@@ -157,11 +154,11 @@
     function edit(id) {
         layer.open({
             type: 2,
-            title: '报表修改',
+            title: '安装包修改',
             shadeClose: true,
             shade: false,
             area: ['893px', '600px'],
-            content: '${ctx!}/admin/subject/edit/' + id,
+            content: '${ctx!}/admin/mobileUpdate/edit/' + id,
             end: function (index) {
                 $('#table_list').bootstrapTable("refresh");
             }
@@ -171,11 +168,11 @@
     function add() {
         layer.open({
             type: 2,
-            title: '报表添加',
+            title: '发布新版本',
             shadeClose: true,
             shade: false,
             area: ['893px', '600px'],
-            content: '${ctx!}/admin/subject/add',
+            content: '${ctx!}/admin/mobileUpdate/add',
             end: function (index) {
                 $('#table_list').bootstrapTable("refresh");
             }
@@ -187,7 +184,7 @@
             $.ajax({
                 type: "POST",
                 dataType: "json",
-                url: "${ctx!}/admin/subject/delete/" + id,
+                url: "${ctx!}/admin/mobileUpdate/delete/" + id,
                 success: function (msg) {
                     layer.msg(msg.message, {time: 2000}, function () {
                         $('#table_list').bootstrapTable("refresh");
@@ -200,7 +197,7 @@
 
     function detailFormatter(index, row) {
         var html = [];
-        html.push('<p><b>报表sql</b></p> <pre class="prettyprint linenums">' + row.reportSql + '</pre>');
+        html.push('<p><b>安装包地址:</b>  <a href ="' + row.updateUrl + '">'+row.updateUrl+'</href></p>');
         return html.join('');
     }
 </script>

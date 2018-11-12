@@ -88,7 +88,7 @@
                         </a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a class="J_menuItem" href="${ctx!}/admin/user/index">安装包版本信息</a>
+                                <a class="J_menuItem" href="${ctx!}/admin/mobileUpdate/index">手机安装包管理</a>
                             </li>
                         </ul>
                     </li>

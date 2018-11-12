@@ -1,18 +1,62 @@
 <!DOCTYPE html>
 <html>
+
 <head>
+
     <meta charset="utf-8">
-    <title></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="${ctx!}/assets/layui/css/layui.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title> - 登录</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+
+    <link rel="shortcut icon" href="favicon.ico"> <link href="${ctx!}/assets/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="${ctx!}/assets/css/font-awesome.css?v=4.4.0" rel="stylesheet">
+
+    <link href="${ctx!}/assets/css/animate.css" rel="stylesheet">
+    <link href="${ctx!}/assets/css/style.css?v=4.1.0" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <meta http-equiv="refresh" content="0;ie.html" />
+    <![endif]-->
+    <script>if(window.top !== window.self){ window.top.location = window.location;}</script>
 </head>
-<body>
 
-<div>
+<body class="gray-bg">
+
+<div class="middle-box text-center loginscreen  animated fadeInDown">
+    <div>
+        <div>
+
+            <h1 class="logo-name">DMS</h1>
+
+        </div>
+        <h3>欢迎使用 经销商管理系统</h3>
+
+        <form class="m-t" role="form" action="${ctx!}/admin/login">
+            <div class="form-group">
+                <input type="username" class="form-control" placeholder="用户名" required="">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" placeholder="密码" required="">
+            </div>
+            <button type="submit" class="btn btn-primary block full-width m-b">登 录</button>
 
 
+            <p class="text-muted text-center"> <a href="login.html#"><small>忘记密码了？</small></a> | <a href="register.html">注册一个新账号</a>
+            </p>
+
+        </form>
+    </div>
 </div>
-<!-- 你的HTML代码 -->
-index
+
+<!-- 全局js -->
+<script src="${ctx!}/assets/js/jquery.min.js?v=2.1.4"></script>
+<script src="${ctx!}/assets/js/bootstrap.min.js?v=3.3.6"></script>
+
+
+
+
 </body>
+
 </html>
