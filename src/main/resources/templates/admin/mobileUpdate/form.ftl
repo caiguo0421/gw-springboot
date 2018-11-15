@@ -21,7 +21,7 @@
 
 <body class="gray-bg">
 <div class="wrapper wrapper-content animated fadeInRight">
-    <form class="form-horizontal m-t" id="frm" method="post" action="${ctx!}/admin/mobileUpdate/edit">
+    <form class="form-horizontal m-t" id="frm" method="post" enctype="multipart/form-data" action="${ctx!}/admin/mobileUpdate/save">
         <div class="row">
             <div class="col-sm-12">
                 <div class="ibox float-e-margins">
@@ -58,15 +58,15 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label">上传文件：</label>
                             <div class="col-sm-8">
-                                <input id="updateUrl" name="updateUrl" class="form-control" type="text"
-                                       value="${mobileUpdate.updateUrl}">
+                                <input type="file" name="file" class="form-control">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-sm-3 control-label">更新内容：</label>
                             <div class="col-sm-8">
-                                <textarea id="updateContent" name="updateContent" class="form-control" rows="5" value="${mobileUpdate.updateContent}">${subject.updateContent}</textarea>
+                                <textarea id="updateContent" name="updateContent" class="form-control" rows="5"
+                                          value="${mobileUpdate.updateContent}">${subject.updateContent}</textarea>
                             </div>
                         </div>
 
@@ -121,7 +121,7 @@
                 $.ajax({
                     type: "POST",
                     dataType: "json",
-                    url: "${ctx!}/admin/mobileUpdate/edit",
+                    url: "${ctx!}/admin/mobileUpdate/save",
                     data: $(form).serialize(),
                     success: function (msg) {
                         layer.msg(msg.message, {time: 2000}, function () {
