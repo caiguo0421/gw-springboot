@@ -11,15 +11,18 @@
     <meta name="keywords" content="">
     <meta name="description" content="">
 
-    <link rel="shortcut icon" href="favicon.ico"> <link href="${ctx!}/assets/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="${ctx!}/assets/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
     <link href="${ctx!}/assets/css/font-awesome.css?v=4.4.0" rel="stylesheet">
 
     <link href="${ctx!}/assets/css/animate.css" rel="stylesheet">
     <link href="${ctx!}/assets/css/style.css?v=4.1.0" rel="stylesheet">
     <!--[if lt IE 9]>
-    <meta http-equiv="refresh" content="0;ie.html" />
+    <meta http-equiv="refresh" content="0;ie.html"/>
     <![endif]-->
-    <script>if(window.top !== window.self){ window.top.location = window.location;}</script>
+    <script>if (window.top !== window.self) {
+        window.top.location = window.location;
+    }</script>
 </head>
 
 <body class="gray-bg">
@@ -31,21 +34,25 @@
             <h1 class="logo-name">DMS</h1>
 
         </div>
+        <#if message?exists >
+	            	<div class="alert alert-danger">
+                        ${message!}
+                    </div>
+        </#if>
         <h3>欢迎使用 经销商管理系统</h3>
-
-        <form class="m-t" role="form" action="${ctx!}/admin/login">
+        <form id="frm" method="post" class="m-t" role="form" action="${ctx!}/admin/login">
             <div class="form-group">
-                <input type="username" class="form-control" placeholder="用户名" required="">
+                <input id="username" name="username" type="text" class="form-control" placeholder="用户名">
             </div>
             <div class="form-group">
-                <input type="password" class="form-control" placeholder="密码" required="">
+                <input id="password" name="password" type="password" class="form-control" placeholder="密码">
             </div>
             <button type="submit" class="btn btn-primary block full-width m-b">登 录</button>
 
-
-            <p class="text-muted text-center"> <a href="login.html#"><small>忘记密码了？</small></a> | <a href="register.html">注册一个新账号</a>
+            <p class="text-muted text-center"><a href="login.html#">
+                <small>忘记密码了？</small>
+            </a> | <a href="register.html">注册一个新账号</a>
             </p>
-
         </form>
     </div>
 </div>
@@ -54,7 +61,43 @@
 <script src="${ctx!}/assets/js/jquery.min.js?v=2.1.4"></script>
 <script src="${ctx!}/assets/js/bootstrap.min.js?v=3.3.6"></script>
 
+<!-- 自定义js -->
+<script src="${ctx!}/assets/js/content.js?v=1.0.0"></script>
 
+<!-- jQuery Validation plugin javascript-->
+<script src="${ctx!}/assets/js/plugins/validate/jquery.validate.min.js"></script>
+<script src="${ctx!}/assets/js/plugins/validate/messages_zh.min.js"></script>
+<script type="text/javascript">
+    $().ready(function () {
+        // 在键盘按下并释放及提交后验证提交表单
+        $("#frm").validate({
+            rules: {
+                username: {
+                    required: true,
+                    minlength: 2
+                },
+                password: {
+                    required: true,
+                    minlength: 5
+                }
+            },
+            messages: {
+                username: {
+                    required: "请输入用户名",
+                    minlength: "用户名必需由两个字母组成"
+                },
+                password: {
+                    required: "请输入密码",
+                    minlength: "密码长度不能小于 6 个字母"
+                }
+            },
+            submitHandler: function (form) {
+                form.submit();
+            }
+        });
+    });
+
+</script>
 
 
 </body>

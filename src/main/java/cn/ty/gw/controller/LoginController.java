@@ -17,11 +17,10 @@ public class LoginController extends BaseController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = {"/admin/login"}, method = RequestMethod.GET)
-    public String login() {
-
-        return "admin/login";
-    }
+//    @RequestMapping(value = {"/admin/login"}, method = RequestMethod.GET)
+//    public String login() {
+//        return "/";
+//    }
 
 
     @RequestMapping(value = {"/admin/login"}, method = RequestMethod.POST)
@@ -33,7 +32,7 @@ public class LoginController extends BaseController {
         } catch (Exception e) {
             model.put("message", e.getMessage());
         }
-        return "admin/login";
+        return "/index";
     }
 
     @RequestMapping(value = {"/admin/logout"}, method = RequestMethod.GET)
