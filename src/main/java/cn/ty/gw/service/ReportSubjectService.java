@@ -89,7 +89,7 @@ public class ReportSubjectService {
             subject.setReportStatus((short) 1);
             subject.setCreateTime(new Timestamp(System.currentTimeMillis()));
             if (subject.getSortNo() == null) {
-                subject.setSortNo((short) (getMaxSortNo() + 1));
+                subject.setSortNo((short) ((getMaxSortNo() / 10 + 1) * 10));
             }
 
             reportSubjectRepository.save(subject);
@@ -104,7 +104,7 @@ public class ReportSubjectService {
             formSubject.setSortNo(subject.getSortNo());
 
             if (formSubject.getSortNo() == null) {
-                formSubject.setSortNo((short) (getMaxSortNo() + 1));
+                formSubject.setSortNo((short) ((getMaxSortNo() / 10 + 1) * 10));
             }
             reportSubjectRepository.saveAndFlush(formSubject);
         }

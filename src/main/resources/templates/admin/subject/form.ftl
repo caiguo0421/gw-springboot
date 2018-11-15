@@ -55,17 +55,26 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">备注：</label>
+                            <label class="col-sm-2 control-label">序号：</label>
                             <div class="col-sm-10">
-                                <input id="reportRemark" name="reportRemark" class="form-control" type="text"
-                                       value="${subject.reportRemark}">
+                                <input id="sortNo" name="sortNo" class="form-control" type="text"
+                                       value="${subject.sortNo}">
                             </div>
                         </div>
+
 
                         <div class="form-group">
                             <label class="col-sm-2 control-label">sql：</label>
                             <div class="col-sm-10">
                                 <textarea id="reportSql" name="reportSql" class="form-control" rows="10" value="${subject.reportSql}">${subject.reportSql}</textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">备注：</label>
+                            <div class="col-sm-10">
+                                <textarea id="reportRemark" name="reportRemark" class="form-control" type="text"
+                                          value="${subject.reportRemark}"></textarea>
                             </div>
                         </div>
 
