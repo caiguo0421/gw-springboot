@@ -10,8 +10,15 @@ import 'vuetify/dist/vuetify.min.css'
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
 // 安装babel支持IE11和Safari 9
 import 'babel-polyfill'
+// Translation provided by Vuetify (javascript)
+import zhHans from 'vuetify/lib/locale/zh-Hans'
 
-Vue.use(Vuetify)
+Vue.use(Vuetify, {
+  lang: {
+    locales: { 'zh-Hans': zhHans },
+    current: 'zh-Hans'
+  }
+})
 
 Vue.config.productionTip = false
 

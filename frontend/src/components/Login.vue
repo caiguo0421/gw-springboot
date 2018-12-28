@@ -15,8 +15,7 @@
                                                 large
                                                 :href="source"
                                                 target="_blank"
-                                                slot="activator"
-                                        >
+                                                slot="activator">
                                             <v-icon large>code</v-icon>
                                         </v-btn>
                                         <span>Source</span>
